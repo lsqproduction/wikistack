@@ -3,6 +3,15 @@ const morgan = require("morgan");
 
 const app = express();
 
+const { db } = require('./models');
+
+console.log(db)
+
+db.authenticate().
+then(()=> {
+  console.log('connected to the database')
+})
+
 app.use(morgan("dev"));
 app.use(express.static(__dirname + "/public"));
 
