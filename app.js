@@ -20,7 +20,7 @@ then(()=> {
 app.use(morgan("dev"));
 app.use(express.static(__dirname + "/public"));
 
-app.get("/", (req, res) => res.send("hello"));
+app.get("/", (req, res) => res.redirect("/wiki"));
 
 
 
