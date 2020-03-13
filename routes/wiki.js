@@ -12,7 +12,12 @@ router.get('/', (req,res,next) =>{
 })
 
 router.post('/', (req,res,next) => {
-  res.send('got to POST /wiki/')
+  try{
+      res.json(req.body);
+      console.log('dhsfgjflagflhsdgfladsl', req.body);  
+  }catch(error){
+      next(error);
+  }
 })
 
 router.get('/add', (req,res,next)=>{

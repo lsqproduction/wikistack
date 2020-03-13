@@ -3,8 +3,6 @@ const morgan = require("morgan");
 
 
 const app = express();
-app.use('/wiki', require('./routes/wiki'));
-app.use("/user", require("./routes/user"));
 
 
 
@@ -19,9 +17,12 @@ then(()=> {
 
 app.use(morgan("dev"));
 app.use(express.static(__dirname + "/public"));
+app.use(express.urlencoded({ extended: false }));
 
 app.get("/", (req, res) => res.redirect("/wiki"));
 
+app.use('/wiki', require('./routes/wiki'));
+app.use("/user", require("./routes/user"));
 
 
 const connect = async () => {
